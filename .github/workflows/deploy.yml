@@ -1,0 +1,26 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # Run this workflow only on pushes to the main branch
+
+permissions:
+  pages: write
+  id-token: write
+
+jobs:
+  deploy:
+    permissions:
+      contents: write
+    
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v3
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: . # The folder the action should deploy.
